@@ -1816,7 +1816,7 @@ def get_spf_record(domain, nameservers=None, timeout=2.0):
     return parsed_record
 
 
-@timeout_decorator.timeout(5, timeout_exception=SMTPError,
+@timeout_decorator.timeout(5, timeout_exception=SMTPError, use_signals=False,
                            exception_message="Connection timed out")
 def test_tls(hostname, ssl_context=None, cache=None):
     """
@@ -1931,7 +1931,7 @@ def test_tls(hostname, ssl_context=None, cache=None):
         return tls
 
 
-@timeout_decorator.timeout(5, timeout_exception=SMTPError,
+@timeout_decorator.timeout(5, timeout_exception=SMTPError, use_signals=False, 
                            exception_message="Connection timed out")
 def test_starttls(hostname, ssl_context=None, cache=None):
     """
